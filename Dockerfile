@@ -5,11 +5,11 @@ WORKDIR /opt/youtrack
 
 ADD log4j.xml /opt/youtrack/bin/
 
-ENV YOUTRACK_VERSION 6.0.12634
+ENV YOUTRACK_VERSION 6.5.16333
 
 RUN mkdir -p /youtrack /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
 
-RUN wget -nv http://download.jetbrains.com/charisma/youtrack-$YOUTRACK_VERSION.jar -O /opt/youtrack/bin/youtrack-$YOUTRACK_VERSION.jar
+RUN wget -nv https://download.jetbrains.com/charisma/youtrack-6.5.16333.jar -O /opt/youtrack/bin/youtrack-$YOUTRACK_VERSION.jar
 
 RUN ln -s /opt/youtrack/bin/youtrack-$YOUTRACK_VERSION.jar /opt/youtrack/bin/youtrack.jar
 
@@ -19,6 +19,7 @@ VOLUME ["/opt/youtrack/data/", "/opt/youtrack/backup/"]
 
 ENTRYPOINT ["java", \
   "-Xmx1g", \
+  "-XX:MaxMetaspaceSize=250m", \
   "-Duser.home=/opt/youtrack", \
   "-Ddatabase.location=/opt/youtrack/data", \
   "-Ddatabase.backup.location=/opt/youtrack/backup", \
@@ -29,6 +30,7 @@ ENTRYPOINT ["java", \
   "-Djetbrains.mps.webr.log4jPath=/opt/youtrack/bin/log4j.xml", \
   "-Djava.awt.headless=true", \
   "-Djetbrains.youtrack.disableCheckForUpdate=true", \
+  "-Djava.security.egd=/dev/urandom", \
   "-jar", \
   "/opt/youtrack/bin/youtrack.jar", \
   "80" \

@@ -3,7 +3,7 @@
 This repository contains a Docker image of JetBrains [YouTrack](http://www.jetbrains.com/youtrack).
 
 * The Docker image is available at [uniplug/youtrack](https://registry.hub.docker.com/u/uniplug/youtrack)
-* The GitHub repository is available at [maartenba/docker-youtrack](https://github.com/uniplug/youtrack-docker)
+* The GitHub repository is available at [uniplug/docker-youtrack](https://github.com/uniplug/youtrack-docker)
 
 ## Usage
 

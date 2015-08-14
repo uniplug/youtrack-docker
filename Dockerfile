@@ -5,11 +5,11 @@ WORKDIR /opt/youtrack
 
 ADD log4j.xml /opt/youtrack/bin/
 
-ENV YOUTRACK_VERSION 6.5.16333
+ENV YOUTRACK_VERSION 6.5.16367
 
 RUN mkdir -p /youtrack /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
 
-RUN wget -nv https://download.jetbrains.com/charisma/youtrack-6.5.16333.jar -O /opt/youtrack/bin/youtrack-$YOUTRACK_VERSION.jar
+RUN wget -nv https://download.jetbrains.com/charisma/youtrack-$YOUTRACK_VERSION.jar -O /opt/youtrack/bin/youtrack-$YOUTRACK_VERSION.jar
 
 RUN ln -s /opt/youtrack/bin/youtrack-$YOUTRACK_VERSION.jar /opt/youtrack/bin/youtrack.jar
 

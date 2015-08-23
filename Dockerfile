@@ -5,7 +5,7 @@ WORKDIR /opt/youtrack
 
 ADD log4j.xml /opt/youtrack/bin/
 
-ENV YOUTRACK_VERSION 6.5.16392
+ENV YOUTRACK_VERSION 6.5.16433
 
 RUN mkdir -p /youtrack /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
 

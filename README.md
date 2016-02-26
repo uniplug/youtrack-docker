@@ -5,8 +5,16 @@ This repository contains a Docker image of JetBrains [YouTrack](http://www.jetbr
 * The Docker image is available at [uniplug/youtrack](https://registry.hub.docker.com/u/uniplug/youtrack)
 * The GitHub repository is available at [uniplug/docker-youtrack](https://github.com/uniplug/youtrack-docker)
 
-## Usage
+Youtrack is started and managed by [supervisor](http://supervisord.org/). If you access to the container with
 
+```bash
+docker attach --sig-proxy=false "container_name" 
+```
+
+you can see the stdout and stderr provided by youtrack.
+
+
+## Usage
 First, pull the Docker image using the following command:
 
 ```bash

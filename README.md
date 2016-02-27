@@ -7,27 +7,37 @@ This repository contains a Docker image of JetBrains [YouTrack](http://www.jetbr
 
 ## Usage
 
-First, pull the Docker image using the following command:
+Create a named container 'youtrack'.
 
 ```bash
-docker pull uniplug/youtrack
+docker create --name youtrack uniplug/youtrack
 ```
 
-Next, create a container.
+Start the container.
 
 ```bash
-docker run -t uniplug/youtrack
+docker start youtrack
 ```
 
-YouTrack starts and listens on port 80 in the container. To map it to the host's port 80, use the following command to create the container instead:
+YouTrack starts and listens on port 80 in the container.
+To map it to the host's port 80, use the following command to create and start the container instead:
 
 ```bash
-docker run --name="youtrack" -p 80:80 -t uniplug/youtrack
+docker run -t --name youtrack -p 80:80 -t uniplug/youtrack
 ```
+
+To access container logs
+
+```bash
+docker logs -f youtrack
+```
+
+YouTrack is started and managed by [supervisor](http://supervisord.org/).
 
 ### Additional settings
 
-YouTrack stores its data and backups at ```/opt/youtrack/data/``` and ```/opt/youtrack/backup/``` in the container. If you wish to re-use data, it is a good idea to set up a volume mapping for these two paths. For example:
+YouTrack stores its data and backups at ```/opt/youtrack/data/``` and ```/opt/youtrack/backup/``` in the container.
+If you wish to re-use data, it is a good idea to set up a volume mapping for these two paths. For example:
 
 ```bash
 docker run -t \
@@ -38,7 +48,7 @@ docker run -t \
  uniplug/youtrack
 ```
 
-### Service example
+### Service example with [jwilder/nginx-proxy](https://hub.docker.com/r/jwilder/nginx-proxy/)
 
 ```ini
 [Unit]

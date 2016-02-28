@@ -1,6 +1,8 @@
 FROM java:8-jre
 MAINTAINER tech@uniplug.ru
 
+RUN mkdir -p /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
+
 WORKDIR /opt/youtrack
 
 ENV YOUTRACK_VERSION 6.5.17031

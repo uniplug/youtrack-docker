@@ -17,11 +17,10 @@ RUN wget --progress=dot:mega \
 
 #ADD youtrack.jar /opt/youtrack/bin/youtrack.jar
 
-ADD supervisor/supervisord.conf /etc/supervisord.conf
 ADD supervisor/youtrack.conf /etc/supervisor/conf.d/youtrack.conf
 
 EXPOSE 80
 
 VOLUME ["/opt/youtrack/data/", "/opt/youtrack/backup/"]
 
-CMD ["/usr/bin/supervisord","-n","-c","/etc/supervisord.conf"]
+CMD ["/usr/bin/supervisord","-n","-c","/etc/supervisor/supervisord.conf"]

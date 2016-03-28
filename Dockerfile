@@ -1,5 +1,5 @@
 FROM java:8-jre
-MAINTAINER tech@uniplug.ru
+MAINTAINER Coordenadoria de Tecnologia da Informação - UFC/Quixada <ccti@quixada.ufc.br>
 
 RUN mkdir -p /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
 

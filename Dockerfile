@@ -5,7 +5,7 @@ RUN mkdir -p /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
 
 WORKDIR /opt/youtrack
 
-ENV YOUTRACK_VERSION eap-7.0.26630
+ENV YOUTRACK_VERSION eap-7.0.26754
 
 RUN apt-get update && \
     apt-get install -y supervisor && \

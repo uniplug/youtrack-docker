@@ -12,7 +12,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN wget --progress=dot:mega \
- https://download.jetbrains.com/charisma/youtrack-${YOUTRACK_VERSION}.jar \
+ https://download.jetbrains.com/charisma/EAP/youtrack-${YOUTRACK_VERSION}.jar \
  -O /opt/youtrack/bin/youtrack.jar
 
 #ADD youtrack.jar /opt/youtrack/bin/

@@ -5,14 +5,14 @@ RUN mkdir -p /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
 
 WORKDIR /opt/youtrack
 
-ENV YOUTRACK_VERSION eap-7.0.26927
+ENV YOUTRACK_VERSION rc1-7.0.27367
 
 RUN apt-get update && \
     apt-get install -y supervisor && \
     rm -rf /var/lib/apt/lists/*
 
 RUN wget --progress=dot:mega \
- https://download.jetbrains.com/charisma/EAP/youtrack-${YOUTRACK_VERSION}.jar \
+ https://download.jetbrains.com/charisma/youtrack-${YOUTRACK_VERSION}.jar \
  -O /opt/youtrack/bin/youtrack.jar
 
 #ADD youtrack.jar /opt/youtrack/bin/

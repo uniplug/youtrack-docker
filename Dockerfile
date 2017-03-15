@@ -5,13 +5,13 @@ RUN mkdir -p /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
 
 WORKDIR /opt/youtrack
 
-ENV YOUTRACK_VERSION 2017.1.31260
+ENV YOUTRACK_VERSION 2017.1.31650
 
 RUN apt-get update && \
     apt-get install -y supervisor && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget --progress=dot:mega \
+RUN wget \
  https://download.jetbrains.com/charisma/youtrack-${YOUTRACK_VERSION}.jar \
  -O /opt/youtrack/bin/youtrack.jar
 

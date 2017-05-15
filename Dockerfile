@@ -1,5 +1,5 @@
 FROM java:8-jre
-MAINTAINER tech@uniplug.ru
+MAINTAINER Coordenadoria de Tecnologia da Informação - UFC/Quixada <ccti@quixada.ufc.br>
 
 RUN mkdir -p /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
 
@@ -14,8 +14,6 @@ RUN apt-get update && \
 RUN wget \
  https://download.jetbrains.com/charisma/youtrack-${YOUTRACK_VERSION}.jar \
  -O /opt/youtrack/bin/youtrack.jar
-
-#ADD youtrack.jar /opt/youtrack/bin/
 
 ADD supervisor/youtrack.conf /etc/supervisor/conf.d/youtrack.conf
 

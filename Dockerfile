@@ -1,26 +1,31 @@
-FROM java:8-jre
-MAINTAINER tech@uniplug.ru
+FROM alpine:3.6
 
-RUN mkdir -p /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
+MAINTAINER ivan@lagunovsky.com
 
-WORKDIR /opt/youtrack
+ENV LANG=C.UTF-8 \
+    JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk/jre \
+    PATH=$PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin \
+    YOUTRACK_VERSION=2017.2.34480 \
+    JAVA_VERSION=8.141.15-r0 \
+    Xms=512m \
+    Xmx=1g \
+    MaxMetaspaceSize=250m
 
-ENV YOUTRACK_VERSION 2017.2.34480
+COPY ./bin/youtrack-start /usr/local/bin/youtrack-start
 
-RUN apt-get update && \
-    apt-get install -y supervisor && \
-    rm -rf /var/lib/apt/lists/*
+RUN chmod +x /usr/local/bin/youtrack-start && \
+    mkdir -p /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin && \
+    echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+    apk add --update --no-cache wget bash
 
-RUN wget \
- https://download.jetbrains.com/charisma/youtrack-${YOUTRACK_VERSION}.jar \
- -O /opt/youtrack/bin/youtrack.jar
-
-#ADD youtrack.jar /opt/youtrack/bin/
-
-ADD supervisor/youtrack.conf /etc/supervisor/conf.d/youtrack.conf
+RUN apk add --update --no-cache openjdk8-jre=${JAVA_VERSION}
+    
+RUN wget https://download.jetbrains.com/charisma/youtrack-${YOUTRACK_VERSION}.jar -O /opt/youtrack/bin/youtrack.jar
 
 EXPOSE 80/tcp
 
+WORKDIR /opt/youtrack
+
 VOLUME ["/opt/youtrack/data/", "/opt/youtrack/backup/"]
 
-CMD ["/usr/bin/supervisord","-n","-c","/etc/supervisor/supervisord.conf"]
+CMD ["/usr/local/bin/youtrack-start"]

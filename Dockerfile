@@ -5,7 +5,7 @@ RUN mkdir -p /opt/youtrack/data /opt/youtrack/backup /opt/youtrack/bin
 
 WORKDIR /opt/youtrack
 
-ENV YOUTRACK_VERSION 2017.3.35968
+ENV YOUTRACK_VERSION 2017.3.36019
 
 RUN apt-get update && \
     apt-get install -y supervisor && \

@@ -1,8 +1,7 @@
 # YouTrack on Docker
-	
-[![](https://badge.imagelayers.io/uniplug/youtrack:latest.svg)](https://imagelayers.io/?images=uniplug/youtrack:latest 'Get your own badge on imagelayers.io')
-[![Docker Repository on Quay](https://quay.io/repository/uniplug/youtrack/status "Docker Repository on Quay")](https://quay.io/repository/uniplug/youtrack)
 
+[![Docker Repository on Quay](https://quay.io/repository/uniplug/youtrack/status "Docker Repository on Quay")](https://quay.io/repository/uniplug/youtrack)
+[![Build Status](https://travis-ci.org/uniplug/youtrack-docker.svg?branch=alpine)](https://travis-ci.org/uniplug/youtrack-docker)
 
 This repository contains a UNOFFICIAL Docker image of JetBrains [YouTrack](http://www.jetbrains.com/youtrack).
 
@@ -37,8 +36,6 @@ To access container logs
 ```bash
 docker logs -f youtrack
 ```
-
-YouTrack is started and managed by [supervisor](http://supervisord.org/).
 
 ### Additional settings
 

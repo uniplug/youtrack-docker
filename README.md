@@ -6,15 +6,17 @@
 
 This repository contains a UNOFFICIAL Docker image of JetBrains [YouTrack](http://www.jetbrains.com/youtrack).
 
-* The Docker image is available at [uniplug/youtrack](https://registry.hub.docker.com/u/uniplug/youtrack)
+* The Docker image is available at [hub.docker.com](https://hub.docker.com/r/uniplug/youtrack/) and [quay.io](https://quay.io/repository/uniplug/youtrack)
 * The GitHub repository is available at [uniplug/docker-youtrack](https://github.com/uniplug/youtrack-docker)
+
+**Alpine tag does not contain a supervisor and cannot restart on its own when failed.**
 
 ## Usage
 
 Create a named container 'youtrack'.
 
 ```bash
-docker create --name youtrack uniplug/youtrack
+docker create --name youtrack quay.io/uniplug/youtrack:alpine
 ```
 
 Start the container.
@@ -27,7 +29,7 @@ YouTrack starts and listens on port 80 in the container.
 To map it to the host's port 80, use the following command to create and start the container:
 
 ```bash
-docker run -d --name youtrack -p 80:80 uniplug/youtrack
+docker run -d --name youtrack -p 80:80 quay.io/uniplug/youtrack:alpine
 ```
 
 To access container logs
@@ -49,26 +51,5 @@ docker run -d \
  -v /data/youtrack/data/:/opt/youtrack/data/ \
  -v /data/youtrack/backup/:/opt/youtrack/backup/ \
  -p 80:80 \
- uniplug/youtrack
-```
-
-### Service example with [jwilder/nginx-proxy](https://hub.docker.com/r/jwilder/nginx-proxy/)
-
-```ini
-[Unit]
-Description=YouTrack
-After=docker.service nginx-proxy.service
-Requires=docker.service nginx-proxy.service
-
-[Service]
-KillMode=none
-ExecStartPre=-/usr/bin/docker kill youtrack
-ExecStartPre=-/usr/bin/docker rm youtrack
-ExecStart=/usr/bin/docker run -t \
-          --name youtrack \
-          -v /data/youtrack/data/:/opt/youtrack/data/ \
-          -v /data/youtrack/backup/:/opt/youtrack/backup/ \
-          -e VIRTUAL_HOST=youtrack.example.com \
-          uniplug/youtrack
-ExecStop=-/usr/bin/docker stop youtrack
+ quay.io/uniplug/youtrack:alpine
 ```

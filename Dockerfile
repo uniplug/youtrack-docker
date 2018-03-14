@@ -11,16 +11,14 @@ RUN apt-get update && \
     apt-get install -y supervisor && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget \
+ADD supervisor/youtrack.conf /etc/supervisor/conf.d/youtrack.conf
+
+RUN wget --no-verbose \
  https://download.jetbrains.com/charisma/youtrack-${YOUTRACK_VERSION}.jar \
  -O /opt/youtrack/bin/youtrack.jar
-
-#ADD youtrack.jar /opt/youtrack/bin/
-
-ADD supervisor/youtrack.conf /etc/supervisor/conf.d/youtrack.conf
 
 EXPOSE 80/tcp
 
 VOLUME ["/opt/youtrack/data/", "/opt/youtrack/backup/"]
 
-CMD ["/usr/bin/supervisord","-n","-c","/etc/supervisor/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]

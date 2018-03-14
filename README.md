@@ -4,7 +4,7 @@
 [![Docker Repository on Quay](https://quay.io/repository/uniplug/youtrack/status "Docker Repository on Quay")](https://quay.io/repository/uniplug/youtrack)
 
 
-This repository contains a Docker image of JetBrains [YouTrack](http://www.jetbrains.com/youtrack).
+This repository contains a UNOFFICIAL Docker image of JetBrains [YouTrack](http://www.jetbrains.com/youtrack).
 
 * The Docker image is available at [uniplug/youtrack](https://registry.hub.docker.com/u/uniplug/youtrack)
 * The GitHub repository is available at [uniplug/docker-youtrack](https://github.com/uniplug/youtrack-docker)
@@ -24,10 +24,10 @@ docker start youtrack
 ```
 
 YouTrack starts and listens on port 80 in the container.
-To map it to the host's port 80, use the following command to create and start the container instead:
+To map it to the host's port 80, use the following command to create and start the container:
 
 ```bash
-docker run -t --name youtrack -p 80:80 uniplug/youtrack
+docker run -d --name youtrack -p 80:80 uniplug/youtrack
 ```
 
 To access container logs
@@ -44,7 +44,7 @@ YouTrack stores its data and backups at ```/opt/youtrack/data/``` and ```/opt/yo
 If you wish to re-use data, it is a good idea to set up a volume mapping for these two paths. For example:
 
 ```bash
-docker run -t \
+docker run -d \
  --name="youtrack" \
  -v /data/youtrack/data/:/opt/youtrack/data/ \
  -v /data/youtrack/backup/:/opt/youtrack/backup/ \

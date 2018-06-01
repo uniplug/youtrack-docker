@@ -1,5 +1,7 @@
 # YouTrack on Docker
 
+# This image is unmaintained, use [official Docker image](https://hub.docker.com/r/jetbrains/youtrack/).
+
 [![Docker Repository on Quay](https://quay.io/repository/uniplug/youtrack/status "Docker Repository on Quay")](https://quay.io/repository/uniplug/youtrack)
 [![Build Status](https://travis-ci.org/uniplug/youtrack-docker.svg?branch=alpine)](https://travis-ci.org/uniplug/youtrack-docker)
 

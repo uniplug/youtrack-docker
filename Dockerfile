@@ -3,7 +3,7 @@ MAINTAINER tech@uniplug.ru
 
 WORKDIR /opt/youtrack
 
-ENV YOUTRACK_VERSION 2018.1.41826
+ENV YOUTRACK_VERSION 2018.2.42133
 
 ADD youtrack-start /usr/local/bin/youtrack-start
 
